@@ -81,13 +81,12 @@
                 Sabor Intenso & Massa Estaladiça!
             </h1>
             <p class="text-xs md:text-sm text-gray-200 mb-4 max-w-lg mx-auto leading-relaxed">
-                Escolha a sua pizza favorita ou monte uma **Meio a Meio (2 Sabores)**! Entrega em Caruaru ou Retirada na loja.
+                Escolha a sua pizza favorita ou monte uma **Meio a Meio (2 Sabores)**! Entrega em Caruaru.
             </p>
 
             <div class="inline-flex flex-wrap justify-center gap-2 text-xs font-medium">
                 <span class="px-2.5 py-1 bg-black/60 rounded-md text-fuego-gold border border-fuego-orange/30"><i class="fa-solid fa-fire text-[10px]"></i> Forno Quente</span>
                 <span class="px-2.5 py-1 bg-black/60 rounded-md text-fuego-gold border border-fuego-orange/30"><i class="fa-solid fa-motorcycle text-[10px]"></i> Delivery Caruaru</span>
-                <span class="px-2.5 py-1 bg-black/60 rounded-md text-fuego-gold border border-fuego-orange/30"><i class="fa-solid fa-store text-[10px]"></i> Retirada no Balcão</span>
             </div>
         </div>
     </section>
@@ -257,12 +256,9 @@
                     <h4 class="font-bold text-fuego-gold uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
                         <i class="fa-solid fa-truck-ramp-box text-fuego-orange"></i> Tipo de Pedido
                     </h4>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button type="button" onclick="setOrderType('delivery')" id="btn-type-delivery" class="py-2 px-2 rounded-lg font-bold border border-fuego-orange bg-fuego-orange text-white text-[11px] flex items-center justify-center gap-1 transition">
+                    <div>
+                        <button type="button" class="w-full py-2 px-2 rounded-lg font-bold border border-fuego-orange bg-fuego-orange text-white text-[11px] flex items-center justify-center gap-1 transition">
                             🚚 Delivery
-                        </button>
-                        <button type="button" onclick="setOrderType('retirada')" id="btn-type-retirada" class="py-2 px-2 rounded-lg font-bold border border-gray-800 bg-gray-900 text-gray-400 text-[11px] flex items-center justify-center gap-1 transition">
-                            🏪 Retirada no Balcão
                         </button>
                     </div>
                 </div>
@@ -503,26 +499,6 @@
             document.getElementById('bairro-input').value = suburb;
             document.getElementById('caruaru-results').classList.add('hidden');
             document.getElementById('number-input').focus();
-        }
-
-        function setOrderType(type) {
-            orderType = type;
-            const btnDelivery = document.getElementById('btn-type-delivery');
-            const btnRetirada = document.getElementById('btn-type-retirada');
-            const addressContainer = document.getElementById('address-container');
-            const taxaRow = document.getElementById('taxa-row');
-
-            if (type === 'delivery') {
-                btnDelivery.className = "py-2 px-2 rounded-lg font-bold border border-fuego-orange bg-fuego-orange text-white text-[11px] flex items-center justify-center gap-1 transition";
-                btnRetirada.className = "py-2 px-2 rounded-lg font-bold border border-gray-800 bg-gray-900 text-gray-400 text-[11px] flex items-center justify-center gap-1 transition";
-                addressContainer.classList.remove('hidden');
-                taxaRow.classList.remove('hidden');
-            } else {
-                btnRetirada.className = "py-2 px-2 rounded-lg font-bold border border-fuego-orange bg-fuego-orange text-white text-[11px] flex items-center justify-center gap-1 transition";
-                btnDelivery.className = "py-2 px-2 rounded-lg font-bold border border-gray-800 bg-gray-900 text-gray-400 text-[11px] flex items-center justify-center gap-1 transition";
-                addressContainer.classList.add('hidden');
-                taxaRow.classList.add('hidden');
-            }
         }
 
         function renderPizzas(items) {
@@ -858,23 +834,19 @@
             }
 
             let addressFull = "";
-            if (orderType === 'delivery') {
-                const street = document.getElementById('street-input').value.trim();
-                const number = document.getElementById('number-input').value.trim();
-                const bairro = document.getElementById('bairro-input').value.trim();
+            const street = document.getElementById('street-input').value.trim();
+            const number = document.getElementById('number-input').value.trim();
+            const bairro = document.getElementById('bairro-input').value.trim();
 
-                if (!street || !number) {
-                    alert('Por favor, preencha a rua e o número para a entrega.');
-                    return;
-                }
-                addressFull = `${street}, Nº ${number}${bairro ? ' - ' + bairro : ''} (Caruaru-PE)`;
-            } else {
-                addressFull = "🏪 RETIRADA NO BALCÃO (CLIENTE VEM BUSCAR)";
+            if (!street || !number) {
+                alert('Por favor, preencha a rua e o número para a entrega.');
+                return;
             }
+            addressFull = `${street}, Nº ${number}${bairro ? ' - ' + bairro : ''} (Caruaru-PE)`;
 
             let msg = `*🔥 NOVO PEDIDO - FUEGO PIZZARIAS 🔥*\n\n`;
             msg += `*Cliente:* ${name}\n`;
-            msg += `*Tipo:* ${orderType === 'delivery' ? '🚚 Delivery (Entrega)' : '🏪 Retirada no Balcão'}\n`;
+            msg += `*Tipo:* 🚚 Delivery (Entrega)\n`;
             msg += `*Endereço:* ${addressFull}\n\n`;
             msg += `*--- ITENS DO PEDIDO ---*\n`;
 
@@ -896,7 +868,7 @@
             if (obs) msg += `*Observação / Troco:* ${obs}\n`;
 
             const encodedMsg = encodeURIComponent(msg);
-            const whatsappNumber = "5581988888486";
+            const whatsappNumber = "5581991183283";
             window.open(`https://wa.me/${whatsappNumber}?text=${encodedMsg}`, '_blank');
         }
     </script>
