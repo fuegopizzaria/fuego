@@ -1700,11 +1700,83 @@
             renderPizzas(filtered);
         }
 
-        function sendOrderToWhatsApp() {
+       const SUPABASE_URL = 'https://SEU_PROJETO.supabase.co';
+        const SUPABASE_ANON_KEY = 'SUA_CHAVE_ANON_AQUI';
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function sendOrderToWhatsApp() {
             if (cart.length === 0) {
                 alert('Adicione pelo menos uma pizza ao carrinho!');
                 return;
             }
+
+            const name = document.getElementById('client-name').value.trim();
+            const payment = document.getElementById('payment-method').value;
+            const obs = document.getElementById('client-obs').value.trim();
+
+            if (!name) {
+                alert('Por favor, informe o seu nome.');
+                return;
+            }
+
+            let addressFull = "";
+            const street = document.getElementById('street-input').value.trim();
+            const number = document.getElementById('number-input').value.trim();
+            const bairro = document.getElementById('bairro-input').value.trim();
+
+            if (!street || !number) {
+                alert('Por favor, preencha a rua e o número para a entrega.');
+                return;
+            }
+            addressFull = `${street}, Nº ${number}${bairro ? ' - ' + bairro : ''} (Caruaru-PE)`;
+
+            const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
+            const newOrder = {
+                client_name: name,
+                address: addressFull,
+                payment: payment,
+                obs: obs,
+                items: cart,
+                total: subtotal,
+                status: 'pendente'
+            };
+
+            // Envia direto para a nuvem do Supabase
+            try {
+                const { error } = await supabaseClient.from('orders').insert([newOrder]);
+                if (error) console.error("Erro ao enviar para o Supabase:", error);
+            } catch (err) {
+                console.error("Erro de conexão", err);
+            }
+
+            // Montar mensagem do WhatsApp
+            let msg = `*🔥 NOVO PEDIDO - FUEGO PIZZARIAS 🔥*\n\n`;
+            msg += `*Cliente:* ${name}\n`;
+            msg += `*Tipo:* 🚚 Delivery (Entrega)\n`;
+            msg += `*Endereço:* ${addressFull}\n\n`;
+            msg += `*--- ITENS DO PEDIDO ---*\n`;
+
+            cart.forEach(item => {
+                if (item.isMulti) {
+                    msg += `• ${item.qty}x Pizza ${item.name} (${getSizeLabel(item.size)})\n`;
+                    msg += `  Sabores: ${item.flavors}\n`;
+                } else {
+                    msg += `• ${item.qty}x Pizza ${item.name} (${getSizeLabel(item.size)})\n`;
+                }
+                msg += `  Borda: ${item.crustName}\n`;
+                msg += `  Valor Un: R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
+                msg += `  Subtotal Item: R$ ${(item.price * item.qty).toFixed(2).replace('.', ',')}\n\n`;
+            });
+
+            msg += `*Total em Produtos:* R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
+            msg += `*Forma de Pagamento:* ${payment}\n`;
+            if (obs) msg += `*Observação / Troco:* ${obs}\n`;
+
+            const encodedMsg = encodeURIComponent(msg);
+            const whatsappNumber = "5581991183283";
+            window.open(`https://wa.me/${whatsappNumber}?text=${encodedMsg}`, '_blank');
+        }
 
             const name = document.getElementById('client-name').value.trim();
             const payment = document.getElementById('payment-method').value;
