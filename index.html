@@ -81,7 +81,7 @@
                 Sabor Intenso & Massa Estaladiça!
             </h1>
             <p class="text-xs md:text-sm text-gray-200 mb-4 max-w-lg mx-auto leading-relaxed">
-                Escolha a sua pizza favorita ou monte uma **Meio a Meio (2 Sabores)**! Entrega em Caruaru ou Retirada na loja.
+                Escolha a sua pizza favorita ou monte uma **Meio a Meio (2 Sabores)**! Entrega rápidas!
             </p>
 
             <div class="inline-flex flex-wrap justify-center gap-2 text-xs font-medium">
@@ -98,7 +98,7 @@
             <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div class="text-center sm:text-left">
                     <h2 class="text-lg md:text-xl font-bold font-heading leading-tight">Dúvida no sabor? Peça Meio a Meio!</h2>
-                    <p class="text-xs text-gray-100 mt-0.5">Cobramos pelo sabor mais caro entre os dois escolhidos.</p>
+                    <p class="text-xs text-gray-100 mt-0.5">Cobramos pelo sabor de maior valor entre os dois escolhidos.</p>
                 </div>
                 <button onclick="openMultiFlavorModal()" class="bg-fuego-gold hover:bg-yellow-400 text-fuego-dark font-extrabold text-xs px-4 py-2.5 rounded-xl shadow transition transform hover:scale-105 flex items-center gap-1.5 whitespace-nowrap">
                     <i class="fa-solid fa-arrows-split-up-and-left text-sm"></i>
@@ -261,9 +261,6 @@
                         <button type="button" onclick="setOrderType('delivery')" id="btn-type-delivery" class="py-2 px-2 rounded-lg font-bold border border-fuego-orange bg-fuego-orange text-white text-[11px] flex items-center justify-center gap-1 transition">
                             🚚 Delivery
                         </button>
-                        <button type="button" onclick="setOrderType('retirada')" id="btn-type-retirada" class="py-2 px-2 rounded-lg font-bold border border-gray-800 bg-gray-900 text-gray-400 text-[11px] flex items-center justify-center gap-1 transition">
-                            🏪 Retirada no Balcão
-                        </button>
                     </div>
                 </div>
 
@@ -348,7 +345,6 @@
             { id: 7, name: "BAIANA", desc: "mussarela, catupiry, presunto, bacon, ovo e cebola.", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300&auto=format&fit=crop", prices: { P: 26, M: 32, G: 38, GG: 45 }, cat: "salgadas" },
             { id: 8, name: "CAIPIRA DA CASA", desc: "frango, milho, bacon e catupiry.", img: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=300&auto=format&fit=crop", prices: { P: 27, M: 33, G: 39, GG: 46 }, cat: "salgadas" },
             { id: 9, name: "CARUARUENSE", desc: "mussarela, charque, frango, palmito, tomate e cebola.", img: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop", prices: { P: 28, M: 33, G: 39, GG: 46 }, cat: "salgadas" },
-            { id: 10, name: "CALABRESA COMPLETA", desc: "mussarela, calabresa, tomate e cebola.", img: "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?q=80&w=300&auto=format&fit=crop", prices: { P: 27, M: 33, G: 39, GG: 46 }, cat: "salgadas" },
             { id: 11, name: "CALABRESA COM MUSSARELA", desc: "mussarela e calabresa.", img: "https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=300&auto=format&fit=crop", prices: { P: 26, M: 32, G: 38, GG: 45 }, cat: "salgadas" },
             { id: 12, name: "5 QUEIJOS", desc: "mussarela, catupiry, cheddar, queijo coalho e parmesão.", img: "https://images.unsplash.com/photo-1573821663912-569905455b1c?q=80&w=300&auto=format&fit=crop", prices: { P: 26, M: 32, G: 38, GG: 45 }, cat: "salgadas" },
             { id: 13, name: "FRANCESA", desc: "mussarela, presunto, catupiry, ovo e tomate.", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300&auto=format&fit=crop", prices: { P: 25, M: 31, G: 37, GG: 43 }, cat: "salgadas" },
@@ -368,7 +364,7 @@
             { id: 27, name: "4 QUEIJOS", desc: "mussarela, queijo coalho, catupiry e parmesão.", img: "https://images.unsplash.com/photo-1573821663912-569905455b1c?q=80&w=300&auto=format&fit=crop", prices: { P: 26, M: 32, G: 38, GG: 45 }, cat: "salgadas" },
             { id: 28, name: "3 QUEIJOS", desc: "mussarela, catupiry e queijo coalho.", img: "https://images.unsplash.com/photo-1573821663912-569905455b1c?q=80&w=300&auto=format&fit=crop", prices: { P: 25, M: 31, G: 37, GG: 43 }, cat: "salgadas" },
             { id: 29, name: "2 QUEIJO", desc: "mussarela e queijo coalho.", img: "https://images.unsplash.com/photo-1573821663912-569905455b1c?q=80&w=300&auto=format&fit=crop", prices: { P: 25, M: 31, G: 37, GG: 43 }, cat: "salgadas" },
-            { id: 30, name: "BACON A CEBOLADO", desc: "mussarela, bacon e cebola.", img: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=300&auto=format&fit=crop", prices: { P: 26, M: 32, G: 38, GG: 45 }, cat: "salgadas" },
+            { id: 30, name: "BACON ACEBOLADO", desc: "mussarela, bacon e cebola.", img: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=300&auto=format&fit=crop", prices: { P: 26, M: 32, G: 38, GG: 45 }, cat: "salgadas" },
             { id: 31, name: "A ESCOLHA DO CLIENTE", desc: "com cinco ingredientes faça sua pizza.", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300&auto=format&fit=crop", prices: { P: 29, M: 34, G: 41, GG: 48 }, cat: "salgadas" },
             { id: 32, name: "CARTOLA", desc: "mussarela, banana, leite condensado e canela.", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=300&auto=format&fit=crop", prices: { P: 25, M: 31, G: 37, GG: 43 }, cat: "doces" },
             { id: 33, name: "PRESTÍGIO", desc: "mussarela, chocolate e coco ralado.", img: "https://images.unsplash.com/photo-1579372786545-d24232daf58c?q=80&w=300&auto=format&fit=crop", prices: { P: 27, M: 33, G: 39, GG: 46 }, cat: "doces" },
@@ -874,9 +870,9 @@
 
             let msg = `*🔥 NOVO PEDIDO - FUEGO PIZZARIAS 🔥*\n\n`;
             msg += `*Cliente:* ${name}\n`;
-            msg += `*Tipo:* ${orderType === 'delivery' ? '🚚 Delivery (Entrega)' : '🏪 Retirada no Balcão'}\n`;
+            msg += `*Tipo:* ${orderType === 'delivery' ? '🚚 Delivery (Entrega)'}\n`;
             msg += `*Endereço:* ${addressFull}\n\n`;
-            msg += `*--- ITENS DO PEDIDO ---*\n`;
+            msg += `*--- ITENS DO PEDIDO ---*\n`;-
 
             cart.forEach(item => {
                 if (item.isMulti) {
