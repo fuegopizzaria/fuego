@@ -63,11 +63,16 @@
                 </div>
             </div>
 
-            <button onclick="toggleCartModal()" class="bg-fuego-orange hover:bg-fuego-darkorange text-white px-3.5 py-1.5 rounded-full font-bold text-xs transition flex items-center shadow-md active:scale-95">
-                <i class="fa-solid fa-fire mr-1.5 text-fuego-gold"></i>
-                <span class="hidden sm:inline mr-1">Pedido</span>
-                <span id="cart-badge" class="bg-fuego-gold text-fuego-dark text-[11px] font-black px-2 py-0.5 rounded-full">0</span>
-            </button>
+            <div class="flex items-center gap-2">
+                <a href="https://www.instagram.com/fuegopizzarias?igsh=ajI0YW05eTg1M3g4" target="_blank" class="bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 text-white p-2 rounded-full font-bold text-xs transition flex items-center justify-center shadow-md active:scale-95 w-8 h-8" title="Siga no Instagram">
+                    <i class="fa-brands fa-instagram text-sm"></i>
+                </a>
+                <button onclick="toggleCartModal()" class="bg-fuego-orange hover:bg-fuego-darkorange text-white px-3.5 py-1.5 rounded-full font-bold text-xs transition flex items-center shadow-md active:scale-95">
+                    <i class="fa-solid fa-fire mr-1.5 text-fuego-gold"></i>
+                    <span class="hidden sm:inline mr-1">Pedido</span>
+                    <span id="cart-badge" class="bg-fuego-gold text-fuego-dark text-[11px] font-black px-2 py-0.5 rounded-full">0</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -145,7 +150,7 @@
 
     <!-- Rodapé -->
     <footer class="bg-fuego-dark text-white pt-8 pb-16 md:pb-8 border-t-2 border-fuego-orange text-xs">
-        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div>
                 <span class="text-lg font-bold font-heading text-fuego-orange block leading-none">FUEGO PIZZARIAS</span>
                 <p class="text-gray-400 leading-relaxed max-w-sm mt-1">
@@ -155,6 +160,12 @@
             <div>
                 <h4 class="font-bold font-heading text-fuego-gold mb-1 text-sm">Horário de Funcionamento</h4>
                 <p class="text-gray-300"><i class="fa-regular fa-clock mr-1 text-fuego-orange"></i> Todos os dias: 16:00 às 23:30</p>
+            </div>
+            <div>
+                <h4 class="font-bold font-heading text-fuego-gold mb-1 text-sm">Redes Sociais</h4>
+                <a href="https://www.instagram.com/fuegopizzarias?igsh=ajI0YW05eTg1M3g4" target="_blank" class="inline-flex items-center gap-2 text-gray-300 hover:text-fuego-gold transition mt-1">
+                    <i class="fa-brands fa-instagram text-fuego-orange text-sm"></i> @fuegopizzarias
+                </a>
             </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 mt-6 pt-4 border-t border-gray-800 text-center text-gray-500 text-[10px]">
