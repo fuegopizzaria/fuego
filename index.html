@@ -81,13 +81,12 @@
                 Sabor Intenso & Massa Estaladiça!
             </h1>
             <p class="text-xs md:text-sm text-gray-200 mb-4 max-w-lg mx-auto leading-relaxed">
-                Escolha a sua pizza favorita ou monte uma **Meio a Meio (2 Sabores)**! Entrega rápidas!
+                Escolha a sua pizza favorita ou monte uma **Meio a Meio (2 Sabores)**! Entrega rápida em domicílio![cite: 1]
             </p>
 
             <div class="inline-flex flex-wrap justify-center gap-2 text-xs font-medium">
-                <span class="px-2.5 py-1 bg-black/60 rounded-md text-fuego-gold border border-fuego-orange/30"><i class="fa-solid fa-fire text-[10px]"></i> Forno Quente</span>
-                <span class="px-2.5 py-1 bg-black/60 rounded-md text-fuego-gold border border-fuego-orange/30"><i class="fa-solid fa-motorcycle text-[10px]"></i> Delivery Caruaru</span>
-                <span class="px-2.5 py-1 bg-black/60 rounded-md text-fuego-gold border border-fuego-orange/30"><i class="fa-solid fa-store text-[10px]"></i> Retirada no Balcão</span>
+                <span class="px-2.5 py-1 bg-black/60 rounded-md text-fuego-gold border border-fuego-orange/30"><i class="fa-solid fa-fire text-[10px]"></i> Forno Quente</span>[cite: 1]
+                <span class="px-2.5 py-1 bg-black/60 rounded-md text-fuego-gold border border-fuego-orange/30"><i class="fa-solid fa-motorcycle text-[10px]"></i> Delivery Caruaru</span>[cite: 1]
             </div>
         </div>
     </section>
@@ -97,8 +96,8 @@
         <div class="bg-gradient-to-r from-fuego-orange via-fuego-darkorange to-fuego-red text-white p-4 rounded-2xl shadow-lg border-2 border-fuego-gold">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div class="text-center sm:text-left">
-                    <h2 class="text-lg md:text-xl font-bold font-heading leading-tight">Dúvida no sabor? Peça Meio a Meio!</h2>
-                    <p class="text-xs text-gray-100 mt-0.5">Cobramos pelo sabor de maior valor entre os dois escolhidos.</p>
+                    <h2 class="text-lg md:text-xl font-bold font-heading leading-tight">Dúvida no sabor? Peça Meio a Meio!</h2>[cite: 1]
+                    <p class="text-xs text-gray-100 mt-0.5">Cobramos pelo sabor de maior valor entre os dois escolhidos.</p>[cite: 1]
                 </div>
                 <button onclick="openMultiFlavorModal()" class="bg-fuego-gold hover:bg-yellow-400 text-fuego-dark font-extrabold text-xs px-4 py-2.5 rounded-xl shadow transition transform hover:scale-105 flex items-center gap-1.5 whitespace-nowrap">
                     <i class="fa-solid fa-arrows-split-up-and-left text-sm"></i>
@@ -150,7 +149,7 @@
             <div>
                 <span class="text-lg font-bold font-heading text-fuego-orange block leading-none">FUEGO PIZZARIAS</span>
                 <p class="text-gray-400 leading-relaxed max-w-sm mt-1">
-                    Sabor marcante, massa quentinha e entrega garantida em Caruaru-PE.
+                    Sabor marcante, massa quentinha e entrega garantida em Caruaru-PE.[cite: 1]
                 </p>
             </div>
             <div>
@@ -159,7 +158,7 @@
             </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 mt-6 pt-4 border-t border-gray-800 text-center text-gray-500 text-[10px]">
-            © 2026 Fuego Pizzarias. Todos os direitos reservados.
+            © 2026 Fuego Pizzarias. Todos os direitos reservados.[cite: 1]
         </div>
     </footer>
 
@@ -253,28 +252,20 @@
             </div>
 
             <div class="p-4 bg-fuego-dark border-t border-gray-800 space-y-3 text-xs">
-                <div>
-                    <h4 class="font-bold text-fuego-gold uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
-                        <i class="fa-solid fa-truck-ramp-box text-fuego-orange"></i> Tipo de Pedido
-                    </h4>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button type="button" onclick="setOrderType('delivery')" id="btn-type-delivery" class="py-2 px-2 rounded-lg font-bold border border-fuego-orange bg-fuego-orange text-white text-[11px] flex items-center justify-center gap-1 transition">
-                            🚚 Delivery
-                        </button>
-                    </div>
-                </div>
-
                 <div class="space-y-1.5">
+                    <h4 class="font-bold text-fuego-gold uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
+                        <i class="fa-solid fa-truck-ramp-box text-fuego-orange"></i> Endereço de Entrega (Delivery)
+                    </h4>
                     <input type="text" id="client-name" placeholder="Seu Nome Completo *" class="w-full px-2.5 py-1.5 text-xs bg-gray-900 border border-gray-800 text-white rounded-md focus:outline-none focus:border-fuego-orange">
                     
                     <div id="address-container" class="space-y-1.5 relative">
                         <button type="button" onclick="getGPSLocation()" class="w-full py-1.5 bg-fuego-orange/20 hover:bg-fuego-orange/30 border border-fuego-orange text-fuego-gold font-bold rounded-md flex items-center justify-center gap-1.5 transition text-[11px]">
                             <i class="fa-solid fa-location-crosshairs text-fuego-orange"></i>
-                            <span id="gps-btn-text">Usar minha localização atual (GPS)</span>
+                            <span id="gps-btn-text">Usar minha localização atual (GPS)</span>[cite: 1]
                         </button>
 
                         <div class="relative">
-                            <input type="text" id="street-input" oninput="searchCaruaruAddress(this.value)" autocomplete="off" placeholder="Digite sua Rua ou Bairro em Caruaru-PE *" class="w-full px-2.5 py-1.5 text-xs bg-gray-900 border border-gray-800 text-white rounded-md focus:outline-none focus:border-fuego-orange">
+                            <input type="text" id="street-input" oninput="searchCaruaruAddress(this.value)" autocomplete="off" placeholder="Digite sua Rua ou Bairro em Caruaru-PE *" class="w-full px-2.5 py-1.5 text-xs bg-gray-900 border border-gray-800 text-white rounded-md focus:outline-none focus:border-fuego-orange">[cite: 1]
                             <div id="address-loading" class="hidden absolute right-2.5 top-2 text-fuego-gold">
                                 <i class="fa-solid fa-circle-notch fa-spin text-xs"></i>
                             </div>
@@ -289,7 +280,7 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-1.5">
+                    <div class="grid grid-cols-2 gap-1.5 pt-1">
                         <select id="payment-method" class="w-full px-2 py-1.5 text-xs bg-gray-900 border border-gray-800 text-white rounded-md focus:outline-none">
                             <option value="Pix">Pix</option>
                             <option value="Cartão de Crédito/Débito">Cartão de Crédito/Débito</option>
@@ -387,7 +378,6 @@
 
         let cart = [];
         let currentMultiSize = 'G';
-        let orderType = 'delivery';
         let searchTimeout = null;
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -499,26 +489,6 @@
             document.getElementById('bairro-input').value = suburb;
             document.getElementById('caruaru-results').classList.add('hidden');
             document.getElementById('number-input').focus();
-        }
-
-        function setOrderType(type) {
-            orderType = type;
-            const btnDelivery = document.getElementById('btn-type-delivery');
-            const btnRetirada = document.getElementById('btn-type-retirada');
-            const addressContainer = document.getElementById('address-container');
-            const taxaRow = document.getElementById('taxa-row');
-
-            if (type === 'delivery') {
-                btnDelivery.className = "py-2 px-2 rounded-lg font-bold border border-fuego-orange bg-fuego-orange text-white text-[11px] flex items-center justify-center gap-1 transition";
-                btnRetirada.className = "py-2 px-2 rounded-lg font-bold border border-gray-800 bg-gray-900 text-gray-400 text-[11px] flex items-center justify-center gap-1 transition";
-                addressContainer.classList.remove('hidden');
-                taxaRow.classList.remove('hidden');
-            } else {
-                btnRetirada.className = "py-2 px-2 rounded-lg font-bold border border-fuego-orange bg-fuego-orange text-white text-[11px] flex items-center justify-center gap-1 transition";
-                btnDelivery.className = "py-2 px-2 rounded-lg font-bold border border-gray-800 bg-gray-900 text-gray-400 text-[11px] flex items-center justify-center gap-1 transition";
-                addressContainer.classList.add('hidden');
-                taxaRow.classList.add('hidden');
-            }
         }
 
         function renderPizzas(items) {
@@ -853,26 +823,21 @@
                 return;
             }
 
-            let addressFull = "";
-            if (orderType === 'delivery') {
-                const street = document.getElementById('street-input').value.trim();
-                const number = document.getElementById('number-input').value.trim();
-                const bairro = document.getElementById('bairro-input').value.trim();
+            const street = document.getElementById('street-input').value.trim();
+            const number = document.getElementById('number-input').value.trim();
+            const bairro = document.getElementById('bairro-input').value.trim();
 
-                if (!street || !number) {
-                    alert('Por favor, preencha a rua e o número para a entrega.');
-                    return;
-                }
-                addressFull = `${street}, Nº ${number}${bairro ? ' - ' + bairro : ''} (Caruaru-PE)`;
-            } else {
-                addressFull = "🏪 RETIRADA NO BALCÃO (CLIENTE VEM BUSCAR)";
+            if (!street || !number) {
+                alert('Por favor, preencha a rua e o número para a entrega.');
+                return;
             }
+            const addressFull = `${street}, Nº ${number}${bairro ? ' - ' + bairro : ''} (Caruaru-PE)`;[cite: 1]
 
             let msg = `*🔥 NOVO PEDIDO - FUEGO PIZZARIAS 🔥*\n\n`;
             msg += `*Cliente:* ${name}\n`;
-            msg += `*Tipo:* ${orderType === 'delivery' ? '🚚 Delivery (Entrega)'}\n`;
+            msg += `*Tipo:* 🚚 Delivery (Entrega)\n`;
             msg += `*Endereço:* ${addressFull}\n\n`;
-            msg += `*--- ITENS DO PEDIDO ---*\n`;-
+            msg += `*--- ITENS DO PEDIDO ---*\n`;
 
             cart.forEach(item => {
                 if (item.isMulti) {
