@@ -81,12 +81,13 @@
                 Sabor Intenso & Massa Estaladiça!
             </h1>
             <p class="text-xs md:text-sm text-gray-200 mb-4 max-w-lg mx-auto leading-relaxed">
-                Escolha a sua pizza favorita ou monte uma **Meio a Meio (2 Sabores)**! Entrega rápida em domicílio[cite: 1]!
+                Escolha a sua pizza favorita ou monte uma **Meio a Meio (2 Sabores)**! Entrega em Caruaru ou Retirada na loja.
             </p>
 
             <div class="inline-flex flex-wrap justify-center gap-2 text-xs font-medium">
-                <span class="px-2.5 py-1 bg-black/60 rounded-md text-fuego-gold border border-fuego-orange/30"><i class="fa-solid fa-fire text-[10px]"></i> Forno Quente</span>[cite: 1]
-                <span class="px-2.5 py-1 bg-black/60 rounded-md text-fuego-gold border border-fuego-orange/30"><i class="fa-solid fa-motorcycle text-[10px]"></i> Delivery Caruaru</span>[cite: 1]
+                <span class="px-2.5 py-1 bg-black/60 rounded-md text-fuego-gold border border-fuego-orange/30"><i class="fa-solid fa-fire text-[10px]"></i> Forno Quente</span>
+                <span class="px-2.5 py-1 bg-black/60 rounded-md text-fuego-gold border border-fuego-orange/30"><i class="fa-solid fa-motorcycle text-[10px]"></i> Delivery Caruaru</span>
+                <span class="px-2.5 py-1 bg-black/60 rounded-md text-fuego-gold border border-fuego-orange/30"><i class="fa-solid fa-store text-[10px]"></i> Retirada no Balcão</span>
             </div>
         </div>
     </section>
@@ -96,8 +97,8 @@
         <div class="bg-gradient-to-r from-fuego-orange via-fuego-darkorange to-fuego-red text-white p-4 rounded-2xl shadow-lg border-2 border-fuego-gold">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div class="text-center sm:text-left">
-                    <h2 class="text-lg md:text-xl font-bold font-heading leading-tight">Dúvida no sabor? Peça Meio a Meio!</h2>[cite: 1]
-                    <p class="text-xs text-gray-100 mt-0.5">Cobramos pelo sabor de maior valor entre os dois escolhidos.</p>[cite: 1]
+                    <h2 class="text-lg md:text-xl font-bold font-heading leading-tight">Dúvida no sabor? Peça Meio a Meio!</h2>
+                    <p class="text-xs text-gray-100 mt-0.5">Cobramos pelo sabor mais caro entre os dois escolhidos.</p>
                 </div>
                 <button onclick="openMultiFlavorModal()" class="bg-fuego-gold hover:bg-yellow-400 text-fuego-dark font-extrabold text-xs px-4 py-2.5 rounded-xl shadow transition transform hover:scale-105 flex items-center gap-1.5 whitespace-nowrap">
                     <i class="fa-solid fa-arrows-split-up-and-left text-sm"></i>
@@ -149,7 +150,7 @@
             <div>
                 <span class="text-lg font-bold font-heading text-fuego-orange block leading-none">FUEGO PIZZARIAS</span>
                 <p class="text-gray-400 leading-relaxed max-w-sm mt-1">
-                    Sabor marcante, massa quentinha e entrega garantida em Caruaru-PE[cite: 1].
+                    Sabor marcante, massa quentinha e entrega garantida em Caruaru-PE.
                 </p>
             </div>
             <div>
@@ -158,7 +159,7 @@
             </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 mt-6 pt-4 border-t border-gray-800 text-center text-gray-500 text-[10px]">
-            © 2026 Fuego Pizzarias. Todos os direitos reservados[cite: 1].
+            © 2026 Fuego Pizzarias. Todos os direitos reservados.
         </div>
     </footer>
 
@@ -252,20 +253,31 @@
             </div>
 
             <div class="p-4 bg-fuego-dark border-t border-gray-800 space-y-3 text-xs">
-                <div class="space-y-1.5">
+                <div>
                     <h4 class="font-bold text-fuego-gold uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
-                        <i class="fa-solid fa-truck-ramp-box text-fuego-orange"></i> Endereço de Entrega (Delivery)
+                        <i class="fa-solid fa-truck-ramp-box text-fuego-orange"></i> Tipo de Pedido
                     </h4>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button type="button" onclick="setOrderType('delivery')" id="btn-type-delivery" class="py-2 px-2 rounded-lg font-bold border border-fuego-orange bg-fuego-orange text-white text-[11px] flex items-center justify-center gap-1 transition">
+                            🚚 Delivery
+                        </button>
+                        <button type="button" onclick="setOrderType('retirada')" id="btn-type-retirada" class="py-2 px-2 rounded-lg font-bold border border-gray-800 bg-gray-900 text-gray-400 text-[11px] flex items-center justify-center gap-1 transition">
+                            🏪 Retirada no Balcão
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-1.5">
                     <input type="text" id="client-name" placeholder="Seu Nome Completo *" class="w-full px-2.5 py-1.5 text-xs bg-gray-900 border border-gray-800 text-white rounded-md focus:outline-none focus:border-fuego-orange">
                     
                     <div id="address-container" class="space-y-1.5 relative">
                         <button type="button" onclick="getGPSLocation()" class="w-full py-1.5 bg-fuego-orange/20 hover:bg-fuego-orange/30 border border-fuego-orange text-fuego-gold font-bold rounded-md flex items-center justify-center gap-1.5 transition text-[11px]">
                             <i class="fa-solid fa-location-crosshairs text-fuego-orange"></i>
-                            <span id="gps-btn-text">Usar minha localização atual (GPS)</span>[cite: 1]
+                            <span id="gps-btn-text">Usar minha localização atual (GPS)</span>
                         </button>
 
                         <div class="relative">
-                            <input type="text" id="street-input" oninput="searchCaruaruAddress(this.value)" autocomplete="off" placeholder="Digite sua Rua ou Bairro em Caruaru-PE *" class="w-full px-2.5 py-1.5 text-xs bg-gray-900 border border-gray-800 text-white rounded-md focus:outline-none focus:border-fuego-orange">[cite: 1]
+                            <input type="text" id="street-input" oninput="searchCaruaruAddress(this.value)" autocomplete="off" placeholder="Digite sua Rua ou Bairro em Caruaru-PE *" class="w-full px-2.5 py-1.5 text-xs bg-gray-900 border border-gray-800 text-white rounded-md focus:outline-none focus:border-fuego-orange">
                             <div id="address-loading" class="hidden absolute right-2.5 top-2 text-fuego-gold">
                                 <i class="fa-solid fa-circle-notch fa-spin text-xs"></i>
                             </div>
@@ -280,7 +292,7 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-1.5 pt-1">
+                    <div class="grid grid-cols-2 gap-1.5">
                         <select id="payment-method" class="w-full px-2 py-1.5 text-xs bg-gray-900 border border-gray-800 text-white rounded-md focus:outline-none">
                             <option value="Pix">Pix</option>
                             <option value="Cartão de Crédito/Débito">Cartão de Crédito/Débito</option>
@@ -336,6 +348,7 @@
             { id: 7, name: "BAIANA", desc: "mussarela, catupiry, presunto, bacon, ovo e cebola.", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300&auto=format&fit=crop", prices: { P: 26, M: 32, G: 38, GG: 45 }, cat: "salgadas" },
             { id: 8, name: "CAIPIRA DA CASA", desc: "frango, milho, bacon e catupiry.", img: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=300&auto=format&fit=crop", prices: { P: 27, M: 33, G: 39, GG: 46 }, cat: "salgadas" },
             { id: 9, name: "CARUARUENSE", desc: "mussarela, charque, frango, palmito, tomate e cebola.", img: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=300&auto=format&fit=crop", prices: { P: 28, M: 33, G: 39, GG: 46 }, cat: "salgadas" },
+            { id: 10, name: "CALABRESA COMPLETA", desc: "mussarela, calabresa, tomate e cebola.", img: "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?q=80&w=300&auto=format&fit=crop", prices: { P: 27, M: 33, G: 39, GG: 46 }, cat: "salgadas" },
             { id: 11, name: "CALABRESA COM MUSSARELA", desc: "mussarela e calabresa.", img: "https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=300&auto=format&fit=crop", prices: { P: 26, M: 32, G: 38, GG: 45 }, cat: "salgadas" },
             { id: 12, name: "5 QUEIJOS", desc: "mussarela, catupiry, cheddar, queijo coalho e parmesão.", img: "https://images.unsplash.com/photo-1573821663912-569905455b1c?q=80&w=300&auto=format&fit=crop", prices: { P: 26, M: 32, G: 38, GG: 45 }, cat: "salgadas" },
             { id: 13, name: "FRANCESA", desc: "mussarela, presunto, catupiry, ovo e tomate.", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300&auto=format&fit=crop", prices: { P: 25, M: 31, G: 37, GG: 43 }, cat: "salgadas" },
@@ -355,7 +368,7 @@
             { id: 27, name: "4 QUEIJOS", desc: "mussarela, queijo coalho, catupiry e parmesão.", img: "https://images.unsplash.com/photo-1573821663912-569905455b1c?q=80&w=300&auto=format&fit=crop", prices: { P: 26, M: 32, G: 38, GG: 45 }, cat: "salgadas" },
             { id: 28, name: "3 QUEIJOS", desc: "mussarela, catupiry e queijo coalho.", img: "https://images.unsplash.com/photo-1573821663912-569905455b1c?q=80&w=300&auto=format&fit=crop", prices: { P: 25, M: 31, G: 37, GG: 43 }, cat: "salgadas" },
             { id: 29, name: "2 QUEIJO", desc: "mussarela e queijo coalho.", img: "https://images.unsplash.com/photo-1573821663912-569905455b1c?q=80&w=300&auto=format&fit=crop", prices: { P: 25, M: 31, G: 37, GG: 43 }, cat: "salgadas" },
-            { id: 30, name: "BACON ACEBOLADO", desc: "mussarela, bacon e cebola.", img: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=300&auto=format&fit=crop", prices: { P: 26, M: 32, G: 38, GG: 45 }, cat: "salgadas" },
+            { id: 30, name: "BACON A CEBOLADO", desc: "mussarela, bacon e cebola.", img: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=300&auto=format&fit=crop", prices: { P: 26, M: 32, G: 38, GG: 45 }, cat: "salgadas" },
             { id: 31, name: "A ESCOLHA DO CLIENTE", desc: "com cinco ingredientes faça sua pizza.", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300&auto=format&fit=crop", prices: { P: 29, M: 34, G: 41, GG: 48 }, cat: "salgadas" },
             { id: 32, name: "CARTOLA", desc: "mussarela, banana, leite condensado e canela.", img: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=300&auto=format&fit=crop", prices: { P: 25, M: 31, G: 37, GG: 43 }, cat: "doces" },
             { id: 33, name: "PRESTÍGIO", desc: "mussarela, chocolate e coco ralado.", img: "https://images.unsplash.com/photo-1579372786545-d24232daf58c?q=80&w=300&auto=format&fit=crop", prices: { P: 27, M: 33, G: 39, GG: 46 }, cat: "doces" },
@@ -378,10 +391,10 @@
 
         let cart = [];
         let currentMultiSize = 'G';
+        let orderType = 'delivery';
         let searchTimeout = null;
 
-        // Garante a execução imediata assim que o DOM carregar
-        window.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
             renderPizzas(pizzas);
             initMultiFlavorOptions();
         });
@@ -492,14 +505,31 @@
             document.getElementById('number-input').focus();
         }
 
+        function setOrderType(type) {
+            orderType = type;
+            const btnDelivery = document.getElementById('btn-type-delivery');
+            const btnRetirada = document.getElementById('btn-type-retirada');
+            const addressContainer = document.getElementById('address-container');
+            const taxaRow = document.getElementById('taxa-row');
+
+            if (type === 'delivery') {
+                btnDelivery.className = "py-2 px-2 rounded-lg font-bold border border-fuego-orange bg-fuego-orange text-white text-[11px] flex items-center justify-center gap-1 transition";
+                btnRetirada.className = "py-2 px-2 rounded-lg font-bold border border-gray-800 bg-gray-900 text-gray-400 text-[11px] flex items-center justify-center gap-1 transition";
+                addressContainer.classList.remove('hidden');
+                taxaRow.classList.remove('hidden');
+            } else {
+                btnRetirada.className = "py-2 px-2 rounded-lg font-bold border border-fuego-orange bg-fuego-orange text-white text-[11px] flex items-center justify-center gap-1 transition";
+                btnDelivery.className = "py-2 px-2 rounded-lg font-bold border border-gray-800 bg-gray-900 text-gray-400 text-[11px] flex items-center justify-center gap-1 transition";
+                addressContainer.classList.add('hidden');
+                taxaRow.classList.add('hidden');
+            }
+        }
+
         function renderPizzas(items) {
             const container = document.getElementById('pizzas-container');
-            const countElem = document.getElementById('pizza-count');
-            
-            if (!container) return;
-            if (countElem) countElem.innerText = `${items.length} opções`;
+            document.getElementById('pizza-count').innerText = `${items.length} opções`;
 
-            if(!items || items.length === 0) {
+            if(items.length === 0) {
                 container.innerHTML = `
                     <div class="col-span-full py-8 text-center text-gray-500 text-xs">
                         <p class="font-bold">Nenhuma pizza encontrada.</p>
@@ -517,7 +547,7 @@
                     <div>
                         <!-- Foto e Nome -->
                         <div class="flex items-center gap-3 mb-2.5">
-                            <img src="${pizza.img}" alt="${pizza.name}" class="w-14 h-14 object-cover rounded-xl border border-fuego-orange/40 shadow-sm flex-shrink-0" onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300&auto=format&fit=crop'">
+                            <img src="${pizza.img}" alt="${pizza.name}" class="w-14 h-14 object-cover rounded-xl border border-fuego-orange/40 shadow-sm flex-shrink-0">
                             <div>
                                 <h3 class="text-sm font-extrabold font-heading text-white leading-tight">${pizza.name}</h3>
                                 <p class="text-gray-400 text-[11px] capitalize leading-tight mt-0.5">${pizza.desc}</p>
@@ -642,8 +672,6 @@
             const sel2 = document.getElementById('flavor-select-2');
             const crustSel = document.getElementById('multi-crust-select');
 
-            if (!sel1 || !sel2) return;
-
             const optionsHTML = pizzas.map(p => `<option value="${p.id}">Nº ${p.id} - ${p.name}</option>`).join('');
 
             sel1.innerHTML = optionsHTML;
@@ -651,9 +679,7 @@
 
             if(pizzas.length > 1) sel2.selectedIndex = 1;
 
-            if (crustSel) {
-                crustSel.innerHTML = crustOptions.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
-            }
+            crustSel.innerHTML = crustOptions.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
 
             calculateMultiPrice();
         }
@@ -675,29 +701,18 @@
             });
 
             const activeBtn = document.getElementById(`btn-msize-${size}`);
-            if (activeBtn) {
-                activeBtn.classList.remove('border-gray-800', 'text-gray-300', 'bg-gray-900');
-                activeBtn.classList.add('border-fuego-orange', 'bg-fuego-orange', 'text-white');
-            }
+            activeBtn.classList.remove('border-gray-800', 'text-gray-300', 'bg-gray-900');
+            activeBtn.classList.add('border-fuego-orange', 'bg-fuego-orange', 'text-white');
 
             calculateMultiPrice();
         }
 
         function calculateMultiPrice() {
-            const sel1 = document.getElementById('flavor-select-1');
-            const sel2 = document.getElementById('flavor-select-2');
-            const priceDisplay = document.getElementById('multi-total-price');
-            
-            if (!sel1 || !sel2 || !priceDisplay) return { totalPrice: 0, maxBasePrice: 0, crustObj: crustOptions[0] };
+            const id1 = parseInt(document.getElementById('flavor-select-1').value);
+            const id2 = parseInt(document.getElementById('flavor-select-2').value);
 
-            const id1 = parseInt(sel1.value);
-            const id2 = parseInt(sel2.value);
-
-            const pizza1 = pizzas.find(p => p.id === id1);
-            const pizza2 = pizzas.find(p => p.id === id2);
-
-            const p1 = pizza1 ? pizza1.prices[currentMultiSize] : 0;
-            const p2 = pizza2 ? pizza2.prices[currentMultiSize] : 0;
+            const p1 = pizzas.find(p => p.id === id1).prices[currentMultiSize];
+            const p2 = pizzas.find(p => p.id === id2).prices[currentMultiSize];
 
             const maxBasePrice = Math.max(p1, p2);
             const crustId = document.getElementById('multi-crust-select').value;
@@ -706,7 +721,7 @@
             let totalPrice = maxBasePrice + crustObj.price;
             totalPrice = Math.round(totalPrice * 100) / 100;
 
-            priceDisplay.innerText = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+            document.getElementById('multi-total-price').innerText = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
             return { totalPrice, maxBasePrice, crustObj };
         }
 
@@ -842,19 +857,24 @@
                 return;
             }
 
-            const street = document.getElementById('street-input').value.trim();
-            const number = document.getElementById('number-input').value.trim();
-            const bairro = document.getElementById('bairro-input').value.trim();
+            let addressFull = "";
+            if (orderType === 'delivery') {
+                const street = document.getElementById('street-input').value.trim();
+                const number = document.getElementById('number-input').value.trim();
+                const bairro = document.getElementById('bairro-input').value.trim();
 
-            if (!street || !number) {
-                alert('Por favor, preencha a rua e o número para a entrega.');
-                return;
+                if (!street || !number) {
+                    alert('Por favor, preencha a rua e o número para a entrega.');
+                    return;
+                }
+                addressFull = `${street}, Nº ${number}${bairro ? ' - ' + bairro : ''} (Caruaru-PE)`;
+            } else {
+                addressFull = "🏪 RETIRADA NO BALCÃO (CLIENTE VEM BUSCAR)";
             }
-            const addressFull = `${street}, Nº ${number}${bairro ? ' - ' + bairro : ''} (Caruaru-PE)`;[cite: 1]
 
             let msg = `*🔥 NOVO PEDIDO - FUEGO PIZZARIAS 🔥*\n\n`;
             msg += `*Cliente:* ${name}\n`;
-            msg += `*Tipo:* 🚚 Delivery (Entrega)\n`;
+            msg += `*Tipo:* ${orderType === 'delivery' ? '🚚 Delivery (Entrega)' : '🏪 Retirada no Balcão'}\n`;
             msg += `*Endereço:* ${addressFull}\n\n`;
             msg += `*--- ITENS DO PEDIDO ---*\n`;
 
@@ -876,7 +896,7 @@
             if (obs) msg += `*Observação / Troco:* ${obs}\n`;
 
             const encodedMsg = encodeURIComponent(msg);
-            const whatsappNumber = "558191183283";
+            const whatsappNumber = "5581988888486";
             window.open(`https://wa.me/${whatsappNumber}?text=${encodedMsg}`, '_blank');
         }
     </script>
