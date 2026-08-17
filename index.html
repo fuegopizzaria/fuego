@@ -81,7 +81,7 @@
                 Sabor Intenso & Massa Estaladiça!
             </h1>
             <p class="text-xs md:text-sm text-gray-200 mb-4 max-w-lg mx-auto leading-relaxed">
-                Escolha a sua pizza favorita ou monte uma **Meio a Meio (2 Sabores)**! Entrega rápida em domicílio![cite: 1]
+                Escolha a sua pizza favorita ou monte uma **Meio a Meio (2 Sabores)**! Entrega rápida em domicílio[cite: 1]!
             </p>
 
             <div class="inline-flex flex-wrap justify-center gap-2 text-xs font-medium">
@@ -149,7 +149,7 @@
             <div>
                 <span class="text-lg font-bold font-heading text-fuego-orange block leading-none">FUEGO PIZZARIAS</span>
                 <p class="text-gray-400 leading-relaxed max-w-sm mt-1">
-                    Sabor marcante, massa quentinha e entrega garantida em Caruaru-PE.[cite: 1]
+                    Sabor marcante, massa quentinha e entrega garantida em Caruaru-PE[cite: 1].
                 </p>
             </div>
             <div>
@@ -158,7 +158,7 @@
             </div>
         </div>
         <div class="max-w-6xl mx-auto px-4 mt-6 pt-4 border-t border-gray-800 text-center text-gray-500 text-[10px]">
-            © 2026 Fuego Pizzarias. Todos os direitos reservados.[cite: 1]
+            © 2026 Fuego Pizzarias. Todos os direitos reservados[cite: 1].
         </div>
     </footer>
 
@@ -380,7 +380,8 @@
         let currentMultiSize = 'G';
         let searchTimeout = null;
 
-        document.addEventListener('DOMContentLoaded', () => {
+        // Garante a execução imediata assim que o DOM carregar
+        window.addEventListener('DOMContentLoaded', () => {
             renderPizzas(pizzas);
             initMultiFlavorOptions();
         });
@@ -493,9 +494,12 @@
 
         function renderPizzas(items) {
             const container = document.getElementById('pizzas-container');
-            document.getElementById('pizza-count').innerText = `${items.length} opções`;
+            const countElem = document.getElementById('pizza-count');
+            
+            if (!container) return;
+            if (countElem) countElem.innerText = `${items.length} opções`;
 
-            if(items.length === 0) {
+            if(!items || items.length === 0) {
                 container.innerHTML = `
                     <div class="col-span-full py-8 text-center text-gray-500 text-xs">
                         <p class="font-bold">Nenhuma pizza encontrada.</p>
@@ -513,7 +517,7 @@
                     <div>
                         <!-- Foto e Nome -->
                         <div class="flex items-center gap-3 mb-2.5">
-                            <img src="${pizza.img}" alt="${pizza.name}" class="w-14 h-14 object-cover rounded-xl border border-fuego-orange/40 shadow-sm flex-shrink-0">
+                            <img src="${pizza.img}" alt="${pizza.name}" class="w-14 h-14 object-cover rounded-xl border border-fuego-orange/40 shadow-sm flex-shrink-0" onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300&auto=format&fit=crop'">
                             <div>
                                 <h3 class="text-sm font-extrabold font-heading text-white leading-tight">${pizza.name}</h3>
                                 <p class="text-gray-400 text-[11px] capitalize leading-tight mt-0.5">${pizza.desc}</p>
@@ -638,6 +642,8 @@
             const sel2 = document.getElementById('flavor-select-2');
             const crustSel = document.getElementById('multi-crust-select');
 
+            if (!sel1 || !sel2) return;
+
             const optionsHTML = pizzas.map(p => `<option value="${p.id}">Nº ${p.id} - ${p.name}</option>`).join('');
 
             sel1.innerHTML = optionsHTML;
@@ -645,7 +651,9 @@
 
             if(pizzas.length > 1) sel2.selectedIndex = 1;
 
-            crustSel.innerHTML = crustOptions.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+            if (crustSel) {
+                crustSel.innerHTML = crustOptions.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+            }
 
             calculateMultiPrice();
         }
@@ -667,18 +675,29 @@
             });
 
             const activeBtn = document.getElementById(`btn-msize-${size}`);
-            activeBtn.classList.remove('border-gray-800', 'text-gray-300', 'bg-gray-900');
-            activeBtn.classList.add('border-fuego-orange', 'bg-fuego-orange', 'text-white');
+            if (activeBtn) {
+                activeBtn.classList.remove('border-gray-800', 'text-gray-300', 'bg-gray-900');
+                activeBtn.classList.add('border-fuego-orange', 'bg-fuego-orange', 'text-white');
+            }
 
             calculateMultiPrice();
         }
 
         function calculateMultiPrice() {
-            const id1 = parseInt(document.getElementById('flavor-select-1').value);
-            const id2 = parseInt(document.getElementById('flavor-select-2').value);
+            const sel1 = document.getElementById('flavor-select-1');
+            const sel2 = document.getElementById('flavor-select-2');
+            const priceDisplay = document.getElementById('multi-total-price');
+            
+            if (!sel1 || !sel2 || !priceDisplay) return { totalPrice: 0, maxBasePrice: 0, crustObj: crustOptions[0] };
 
-            const p1 = pizzas.find(p => p.id === id1).prices[currentMultiSize];
-            const p2 = pizzas.find(p => p.id === id2).prices[currentMultiSize];
+            const id1 = parseInt(sel1.value);
+            const id2 = parseInt(sel2.value);
+
+            const pizza1 = pizzas.find(p => p.id === id1);
+            const pizza2 = pizzas.find(p => p.id === id2);
+
+            const p1 = pizza1 ? pizza1.prices[currentMultiSize] : 0;
+            const p2 = pizza2 ? pizza2.prices[currentMultiSize] : 0;
 
             const maxBasePrice = Math.max(p1, p2);
             const crustId = document.getElementById('multi-crust-select').value;
@@ -687,7 +706,7 @@
             let totalPrice = maxBasePrice + crustObj.price;
             totalPrice = Math.round(totalPrice * 100) / 100;
 
-            document.getElementById('multi-total-price').innerText = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+            priceDisplay.innerText = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
             return { totalPrice, maxBasePrice, crustObj };
         }
 
