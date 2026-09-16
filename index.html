@@ -263,6 +263,16 @@
                 </button>
             </div>
 
+            <!-- Atalho Rápido de Bebidas no Carrinho -->
+            <div class="bg-gray-900/90 border-b border-gray-800 p-2.5">
+                <span class="text-[10px] font-bold text-fuego-gold uppercase block mb-1.5 flex items-center gap-1">
+                    <i class="fa-solid fa-champagne-glasses"></i> Adicionar Bebida Rápido:
+                </span>
+                <div class="grid grid-cols-2 gap-1.5" id="cart-quick-drinks">
+                    <!-- Preenchido via JS -->
+                </div>
+            </div>
+
             <div class="p-4 flex-1 overflow-y-auto space-y-3" id="cart-items">
             </div>
 
@@ -398,9 +408,9 @@
             { id: 47, name: "CALABRESA PICANTE", desc: "mussarela, calabresa picante, tomate e cebola.", img: "https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=300&auto=format&fit=crop", prices: { P: 27, M: 33, G: 39, GG: 46 }, cat: "salgadas" },
             { id: 48, name: "CALABRESA 2", desc: "calabresa especial da casa com temperos.", img: "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?q=80&w=300&auto=format&fit=crop", prices: { P: 26, M: 32, G: 38, GG: 45 }, cat: "salgadas" },
             { id: 49, name: "CALABRESA PICANTE COM CREME X", desc: "calabresa picante com cream cheese e mussarela.", img: "https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=300&auto=format&fit=crop", prices: { P: 30, M: 37, G: 44, GG: 51 }, cat: "salgadas" },
-            // Bebidas adicionadas
-            { id: 50, name: "COCA-COLA 2L", desc: "Refrigerante Coca-Cola 2 Litros bem gelado.", img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=300&auto=format&fit=crop", price: 12, cat: "bebidas", isDrink: true },
-            { id: 51, name: "GUARANÁ 1L", desc: "Refrigerante Guaraná 1 Litro gelado.", img: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?q=80&w=300&auto=format&fit=crop", price: 10, cat: "bebidas", isDrink: true }
+            // Bebidas
+            { id: 50, name: "COCA-COLA 2L", desc: "Refrigerante Coca-Cola 2 Litros", img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=300&auto=format&fit=crop", price: 12, cat: "bebidas", isDrink: true },
+            { id: 51, name: "GUARANÁ 1L", desc: "Refrigerante Guaraná 1 Litro", img: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?q=80&w=300&auto=format&fit=crop", price: 10, cat: "bebidas", isDrink: true }
         ];
 
         let cart = [];
@@ -411,7 +421,25 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderPizzas(pizzas);
             initMultiFlavorOptions();
+            renderCartQuickDrinks();
         });
+
+        function renderCartQuickDrinks() {
+            const container = document.getElementById('cart-quick-drinks');
+            const drinks = pizzas.filter(p => p.isDrink);
+
+            container.innerHTML = drinks.map(drink => `
+                <button onclick="addDrinkToCart(${drink.id})" class="bg-gray-800 hover:bg-fuga-orange/20 border border-fuego-orange/40 hover:border-fuego-orange text-left p-1.5 rounded-md flex items-center justify-between transition group">
+                    <div class="truncate pr-1">
+                        <div class="font-bold text-[10px] text-white group-hover:text-fuego-gold truncate">${drink.name}</div>
+                        <div class="text-[9px] text-fuego-gold">R$ ${drink.price.toFixed(2).replace('.', ',')}</div>
+                    </div>
+                    <span class="bg-fuego-orange text-white w-5 h-5 rounded flex items-center justify-center text-[10px] font-bold flex-shrink-0 shadow">
+                        <i class="fa-solid fa-plus"></i>
+                    </span>
+                </button>
+            `).join('');
+        }
 
         function getGPSLocation() {
             const btnText = document.getElementById('gps-btn-text');
